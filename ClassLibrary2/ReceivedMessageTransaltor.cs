@@ -17,12 +17,11 @@ namespace ClassLibrary2
 
             InputCommandCollection = TranslateInputCharsIntoInputCommands(InputArray);
 
-            return RoverInput.Empty;
+            return new RoverInput(InputCommandCollection);
         }
 
         private IEnumerable<InputCommand> TranslateInputCharsIntoInputCommands(char[] inputArray)
         {
-
             return from inputChar in inputArray
                    select TranslateInputCharIntoInputCommand(inputChar);
         }

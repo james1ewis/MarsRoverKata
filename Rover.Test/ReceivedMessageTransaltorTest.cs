@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using ClassLibrary2;
+using NUnit.Framework;
 
 namespace Rover.Test
 {
@@ -54,6 +51,16 @@ namespace Rover.Test
             sut.Translate("LMRM");
 
             CollectionAssert.AreEqual(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right, InputCommand.Move }, sut.InputCommandCollection);
+        }
+
+        [Test]
+        public void TranslateMethodShouldReturnARoverInputObjectContainingTheTranslatedCommands()
+        {
+            var expectedRoverInput = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right });
+            var sut = new ReceivedMessageTransaltor();
+            var actualRoverInput = sut.Translate("LMR");
+
+            Assert.AreEqual(expectedRoverInput.Commands, actualRoverInput.Commands);
         }
     }
 }

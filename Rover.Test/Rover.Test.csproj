@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HeadingTest.cs" />
+    <Compile Include="IntegrationTests\RoverIntegrationTests.cs" />
     <Compile Include="PositionTest.cs" />
     <Compile Include="RoverTest.cs" />
     <Compile Include="Mocks\MockTranslator.cs" />

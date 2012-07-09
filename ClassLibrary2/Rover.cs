@@ -27,70 +27,49 @@ namespace ClassLibrary2
         {
             Input = ReceivedMessageTranslator.Translate(instructions);
 
-            foreach (var command in Input.Commands)
-            {
-                switch (command)
-                {
-                    case InputCommand.Left:
-                        switch (CurrentHeading.HeadingEnum)
-                        {
-                            case HeadingEnum.North:
-                                CurrentHeading = new Heading(HeadingEnum.West);
-                                break;
-                            case HeadingEnum.East:
-                                CurrentHeading = new Heading(HeadingEnum.North);
-                                break;
-                            case HeadingEnum.South:
-                                CurrentHeading = new Heading(HeadingEnum.East);
-                                break;
-                            case HeadingEnum.West:
-                                CurrentHeading = new Heading(HeadingEnum.South);
-                                break;
-                            default: break;
-                        }
-                        break;
-                    case InputCommand.Right:
-                        switch (CurrentHeading.HeadingEnum)
-                        {
-                            case HeadingEnum.North:
-                                CurrentHeading = new Heading(HeadingEnum.East);
-                                break;
-                            case HeadingEnum.East:
-                                CurrentHeading = new Heading(HeadingEnum.South);
-                                break;
-                            case HeadingEnum.South:
-                                CurrentHeading = new Heading(HeadingEnum.West);
-                                break;
-                            case HeadingEnum.West:
-                                CurrentHeading = new Heading(HeadingEnum.North);
-                                break;
-                            default: break;
-                        }
-                        break;
-                    case InputCommand.Move:
-                        switch (CurrentHeading.HeadingEnum)
-                        {
-                            case HeadingEnum.North:
-                                CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y + 1);
-                                break;
-                            case HeadingEnum.East:
-                                CurrentPosition = new Position(CurrentPosition.X + 1, CurrentPosition.Y);
-                                break;
-                            case HeadingEnum.South:
-                                CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y - 1);
-                                break;
-                            case HeadingEnum.West:
-                                CurrentPosition = new Position(CurrentPosition.X - 1, CurrentPosition.Y);
-                                break;
-                            default: break;
-                        }
-                        break;
-                    default: break;
-
-                }
-            }
+            ExecuteInputCommands();
 
             return TranslatePositionAndHeadingIntoString();
+        }
+
+        private void ExecuteInputCommands()
+        {
+            foreach (var command in Input.Commands)
+            {
+                ExecuteInputCommand(command);
+            }
+        }
+
+        private void ExecuteInputCommand(InputCommand command)
+        {
+            switch (command)
+            {
+                case InputCommand.Left:
+                    CurrentHeading = (CurrentHeading.HeadingEnum == HeadingEnum.North) ? new Heading(HeadingEnum.West) : CurrentHeading = new Heading(CurrentHeading.HeadingEnum - 1);
+                    break;
+                case InputCommand.Right:
+                    CurrentHeading = (CurrentHeading.HeadingEnum == HeadingEnum.West) ? new Heading(HeadingEnum.North) : CurrentHeading = new Heading(CurrentHeading.HeadingEnum + 1);
+                    break;
+                case InputCommand.Move:
+                    switch (CurrentHeading.HeadingEnum)
+                    {
+                        case HeadingEnum.North:
+                            CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y + 1);
+                            break;
+                        case HeadingEnum.East:
+                            CurrentPosition = new Position(CurrentPosition.X + 1, CurrentPosition.Y);
+                            break;
+                        case HeadingEnum.South:
+                            CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y - 1);
+                            break;
+                        case HeadingEnum.West:
+                            CurrentPosition = new Position(CurrentPosition.X - 1, CurrentPosition.Y);
+                            break;
+                        default: break;
+                    }
+                    break;
+                default: break;
+            }
         }
 
         private string TranslatePositionAndHeadingIntoString()
