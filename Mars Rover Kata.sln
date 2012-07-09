@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Web Developer Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover", "ClassLibrary2\Rover.csproj", "{DB0E02A3-1DAC-4602-9FD4-228854245055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rover.Test", "Rover.Test\Rover.Test.csproj", "{612E9F1B-D86E-40CE-A63E-49B1A6B4643A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB0E02A3-1DAC-4602-9FD4-228854245055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0E02A3-1DAC-4602-9FD4-228854245055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0E02A3-1DAC-4602-9FD4-228854245055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0E02A3-1DAC-4602-9FD4-228854245055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612E9F1B-D86E-40CE-A63E-49B1A6B4643A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612E9F1B-D86E-40CE-A63E-49B1A6B4643A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612E9F1B-D86E-40CE-A63E-49B1A6B4643A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612E9F1B-D86E-40CE-A63E-49B1A6B4643A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
