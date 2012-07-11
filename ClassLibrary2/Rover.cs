@@ -56,16 +56,16 @@ namespace ClassLibrary2
                     switch (CurrentHeading.HeadingEnum)
                     {
                         case HeadingEnum.North:
-                            CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y + 1);
+                            CurrentPosition = (CurrentPosition.Y == PlanetPlateau.UpperY) ? CurrentPosition : new Position(CurrentPosition.X, CurrentPosition.Y + 1);
                             break;
                         case HeadingEnum.East:
-                            CurrentPosition = new Position(CurrentPosition.X + 1, CurrentPosition.Y);
+                            CurrentPosition = (CurrentPosition.X == PlanetPlateau.UpperX) ? CurrentPosition : new Position(CurrentPosition.X + 1, CurrentPosition.Y);
                             break;
                         case HeadingEnum.South:
-                            CurrentPosition = new Position(CurrentPosition.X, CurrentPosition.Y - 1);
+                            CurrentPosition = (CurrentPosition.Y == PlanetPlateau.LowerY) ? CurrentPosition : new Position(CurrentPosition.X, CurrentPosition.Y - 1);
                             break;
                         case HeadingEnum.West:
-                            CurrentPosition = new Position(CurrentPosition.X - 1, CurrentPosition.Y);
+                            CurrentPosition = (CurrentPosition.X == PlanetPlateau.LowerX) ? CurrentPosition : new Position(CurrentPosition.X - 1, CurrentPosition.Y);
                             break;
                         default: break;
                     }

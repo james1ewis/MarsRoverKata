@@ -7,6 +7,8 @@ namespace ClassLibrary2
     {
         public int UpperX { get; set; }
         public int UpperY { get; set; }
+        public int LowerX { get; set; }
+        public int LowerY { get; set; }
 
         public static IPlateau Parse(string bounds)
         {
@@ -26,7 +28,7 @@ namespace ClassLibrary2
             if (!int.TryParse(boundsArray[1], out y))
                 throw new InvalidOperationException("plateau can only parse valid input strings");
 
-            return new Plateau { UpperX = x, UpperY = y };
+            return new Plateau { UpperX = x, UpperY = y, LowerX = 0, LowerY = 0 };
         }
     }
 }

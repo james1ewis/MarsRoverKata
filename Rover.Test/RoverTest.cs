@@ -180,5 +180,29 @@ namespace Rover.Test
             Assert.AreEqual(5, parsedBounds.UpperX);
             Assert.AreEqual(5, parsedBounds.UpperY);
         }
+
+        [Test]
+        public void RoverShouldNotExecuteAnInputCommandIfItWillTakeItOverTheEdgeOfThePlateau()
+        {
+            var mockTranslator = new MockTranslator();
+            var sut = new ClassLibrary2.Rover("2 2", "N", "2 2", mockTranslator);
+            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right, InputCommand.Move });
+            
+            var returnedPosition = sut.ReceiveDirectionInstructions("LMRM");
+
+            Assert.AreEqual("1 2 N", returnedPosition);
+        }
+
+        [Test]
+        public void RoverShouldNotExecuteAnInputCommandIfItWillTakeItBelowTheLowerBoundsOfThePlateau()
+        {
+            var mockTranslator = new MockTranslator();
+            var sut = new ClassLibrary2.Rover("0 0", "S", "2 2", mockTranslator);
+            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Move, InputCommand.Move, InputCommand.Left, InputCommand.Move });
+
+            var returnedPosition = sut.ReceiveDirectionInstructions("MMRM");
+
+            Assert.AreEqual("1 0 E", returnedPosition);
+        }
     }
 }

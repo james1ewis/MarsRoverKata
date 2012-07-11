@@ -9,5 +9,7 @@ namespace ClassLibrary2
     {
         int UpperX { get; set; }
         int UpperY { get; set; }
+        int LowerY { get; set; }
+        int LowerX { get; set; }
     }
 }
