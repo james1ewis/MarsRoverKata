@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Heading.cs" />
     <Compile Include="InputCommand.cs" />
-    <Compile Include="IReceivedMessageTransaltor.cs" />
+    <Compile Include="Interfaces\IReceivedMessageTransaltor.cs" />
+    <Compile Include="IPlateau.cs" />
+    <Compile Include="Plateau.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="ReceivedMessageTransaltor.cs" />
     <Compile Include="Rover.cs" />

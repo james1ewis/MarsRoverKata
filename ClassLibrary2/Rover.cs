@@ -10,14 +10,16 @@ namespace ClassLibrary2
         public Position CurrentPosition { get; private set; }
         public Heading CurrentHeading { get; private set; }
         public RoverInput Input { get; private set; }
+        public IPlateau PlanetPlateau { get; private set; }
 
-        public Rover(string position, string heading)
-            : this(position, heading, new ReceivedMessageTransaltor()) { }
+        public Rover(string position, string heading, string plateauUpperBounds)
+            : this(position, heading, plateauUpperBounds, new ReceivedMessageTransaltor()) { }
 
-        public Rover(string position, string heading, IReceivedMessageTranslator translator)
+        public Rover(string position, string heading, string plateauUpperBounds, IReceivedMessageTranslator translator)
         {
             CurrentPosition = Position.Parse(position);
             CurrentHeading = Heading.Parse(heading);
+            PlanetPlateau = Plateau.Parse(plateauUpperBounds);
 
             ReceivedMessageTranslator = translator;
         }

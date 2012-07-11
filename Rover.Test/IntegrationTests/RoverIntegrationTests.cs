@@ -8,7 +8,7 @@ namespace Rover.Test.IntegrationTests
         [Test]
         public void TestScenarioFromKata1()
         {
-            var sut = new ClassLibrary2.Rover("1 2", "N");
+            var sut = new ClassLibrary2.Rover("1 2", "N", "5 5");
             var result = sut.ReceiveDirectionInstructions("LMLMLMLMM");
             var expectedResult = "1 3 N";
 
@@ -18,7 +18,7 @@ namespace Rover.Test.IntegrationTests
         [Test]
         public void TestScenarioFromKata2()
         {
-            var sut = new ClassLibrary2.Rover("3 3", "E");
+            var sut = new ClassLibrary2.Rover("3 3", "E", "5 5");
             var result = sut.ReceiveDirectionInstructions("MMRMMRMRRM");
             var expectedResult = "5 1 E";
 

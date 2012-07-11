@@ -11,7 +11,7 @@ namespace Rover.Test
         public void RoverShouldAcceptDirectionInstructionsAsString()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             sut.ReceiveDirectionInstructions("");
 
             Assert.Pass();
@@ -21,7 +21,7 @@ namespace Rover.Test
         public void RoverShouldReturnItsNewPositionAsAString()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             var newPosition = sut.ReceiveDirectionInstructions("");
 
             Assert.IsInstanceOf<string>(newPosition);
@@ -31,7 +31,7 @@ namespace Rover.Test
         public void RoverShouldKeepTrackOfItsCurrentPosition()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             var currentPosition = sut.CurrentPosition;
 
             Assert.Pass();
@@ -41,7 +41,7 @@ namespace Rover.Test
         public void RoverShouldSetItsCurrentPositionAfterACompletedMove()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             sut.ReceiveDirectionInstructions("");
 
             Assert.IsNotNull(sut.CurrentPosition);
@@ -52,7 +52,7 @@ namespace Rover.Test
         public void RoverShouldKeepTrackOfItsCurrentHeading()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
             var heading = sut.CurrentHeading;
 
@@ -63,7 +63,7 @@ namespace Rover.Test
         public void RoverShouldSetItsCurrentHeadingAfterACompletedMove()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             sut.ReceiveDirectionInstructions("");
 
             Assert.IsNotNull(sut.CurrentHeading);
@@ -73,7 +73,7 @@ namespace Rover.Test
         public void ShouldBeAbleToInitializeRoverCurrentPositionAndHeading()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
             Assert.IsNotNull(sut.CurrentHeading);
             Assert.IsNotNull(sut.CurrentPosition);
@@ -82,8 +82,8 @@ namespace Rover.Test
         [Test]
         public void RoverShouldUpdateCurrentPositionGivenASetOfInstructions()
         {
-            var mockTranslator = new MockTranslator();            
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var mockTranslator = new MockTranslator();
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             
             mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand>{ InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Move });
 
@@ -100,7 +100,7 @@ namespace Rover.Test
         public void RoverShouldUpdateCurrentHeadingGivenASetOfInstructions()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
             mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
@@ -116,7 +116,7 @@ namespace Rover.Test
         public void RoverShouldCallATranslatorToTranslateTheRecevievedInput()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
             sut.ReceiveDirectionInstructions("LMLMLMLMM");
 
@@ -128,7 +128,7 @@ namespace Rover.Test
         public void RoverShouldCallATranslatorWithTheReceivedInstructionsToGetTheInput()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
             sut.ReceiveDirectionInstructions("LMLMLMLMM");
 
@@ -139,7 +139,7 @@ namespace Rover.Test
         public void RoverShouldCallTranslatorWithTheReceivedInstructionsAndStoreTheReturnedRoverInput()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
             sut.ReceiveDirectionInstructions("LM");
@@ -152,12 +152,33 @@ namespace Rover.Test
         public void RoverShouldReturnItsCurrentPositionAsAStringAfterProcessingASetOfInstructions()
         {
             var mockTranslator = new MockTranslator();
-            var sut = new ClassLibrary2.Rover("2 2", "N", mockTranslator);
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
             var returnedPosition = sut.ReceiveDirectionInstructions("LM");
 
             Assert.AreEqual("1 2 W", returnedPosition);
+        }
+
+        [Test]
+        public void RoverShouldBeInitializedWithUpperBoundsOfPlateau()
+        {
+            var mockTranslator = new MockTranslator();
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
+            Assert.Pass();
+        }
+
+        [Test]
+        public void RoverShouldParseThePlateauUpperBoundsDuringInitialization()
+        {
+            var mockTranslator = new MockTranslator();
+            var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
+
+            var parsedBounds = sut.PlanetPlateau;
+
+            Assert.IsInstanceOf<IPlateau>(parsedBounds);
+            Assert.AreEqual(5, parsedBounds.UpperX);
+            Assert.AreEqual(5, parsedBounds.UpperY);
         }
     }
 }
