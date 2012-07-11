@@ -25,10 +25,13 @@ namespace Rover.Test
             var sut = new RoverControl();
             var rovers = sut.Rovers;
 
-            Assert.IsInstanceOf<IEnumerable<ClassLibrary2.Rover>>(rovers);
+            Assert.IsInstanceOf<IList<ClassLibrary2.Rover>>(rovers);
         }
 
-        //[Test]
-        //public void ExecuteCommandShouldSendEach
+        [Test]
+        public void ExecuteCommandShouldCreateANewRoverForEachCommand()
+        {
+
+        }
     }
 }
