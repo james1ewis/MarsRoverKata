@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="Heading.cs" />
+    <Compile Include="HeadingAdjustment.cs" />
+    <Compile Include="IInputCommand.cs" />
     <Compile Include="InputCommand.cs" />
     <Compile Include="Interfaces\IReceivedMessageTransaltor.cs" />
     <Compile Include="IPlateau.cs" />

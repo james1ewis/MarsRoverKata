@@ -91,13 +91,20 @@ namespace ClassLibrary2
 
         internal void ExecuteNavigationCommand(NavigationCommand command)
         {
+            _positionController.SetBounds(command.Plateau);
+
             foreach (var navCommand in command.Commands)
             {
                 if (navCommand == InputCommand.Move)
                     _positionController.ProgressPosition();
                 else
-                    _positionController.AdjustHeading(navCommand);
+                    _positionController.AdjustHeading(GetHeadingAdjustment(navCommand));
             }
+        }
+
+        private IHeadingAdjustment GetHeadingAdjustment(InputCommand navCommand)
+        {
+            return new HeadingAdjustment(Direction.Left);
         }
 
         internal Position GetFinalPosition()
