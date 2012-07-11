@@ -13,7 +13,7 @@ namespace Rover.Test
         [Test]
         public void RoverInputShouldContainACollectionOfInputCommands()
         {
-            var sut = new RoverInput(new List<InputCommand>());
+            var sut = new NavigationCommand(new List<InputCommand>());
 
             Assert.IsInstanceOf<IEnumerable<InputCommand>>(sut.Commands);
         }
@@ -21,7 +21,7 @@ namespace Rover.Test
         [Test]
         public void RoverInputShouldBeInitializedWithACollectionOfInputCommands()
         {
-            var sut = new RoverInput(new List<InputCommand>());
+            var sut = new NavigationCommand(new List<InputCommand>());
 
             Assert.Pass();
         }

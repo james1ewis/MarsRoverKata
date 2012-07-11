@@ -13,7 +13,7 @@ namespace Rover.Test
             var sut = new ReceivedMessageTransaltor();
             var input = sut.Translate(string.Empty);
 
-            Assert.IsInstanceOf<RoverInput>(input);
+            Assert.IsInstanceOf<NavigationCommand>(input);
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Rover.Test
         [Test]
         public void TranslateMethodShouldReturnARoverInputObjectContainingTheTranslatedCommands()
         {
-            var expectedRoverInput = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right });
+            var expectedRoverInput = new NavigationCommand(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right });
             var sut = new ReceivedMessageTransaltor();
             var actualRoverInput = sut.Translate("LMR");
 

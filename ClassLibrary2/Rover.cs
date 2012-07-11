@@ -9,7 +9,7 @@ namespace ClassLibrary2
         public IReceivedMessageTranslator ReceivedMessageTranslator { get; private set; }
         public Position CurrentPosition { get; private set; }
         public Heading CurrentHeading { get; private set; }
-        public RoverInput Input { get; private set; }
+        public NavigationCommand Input { get; private set; }
         public IPlateau PlanetPlateau { get; private set; }
 
         public Rover(string position, string heading, string plateauUpperBounds)
@@ -82,6 +82,27 @@ namespace ClassLibrary2
             builder.Append(CurrentHeading);
 
             return builder.ToString();
+        }
+
+
+
+
+        private readonly IPositionController _positionController;
+
+        internal void ExecuteNavigationCommand(NavigationCommand command)
+        {
+            foreach (var navCommand in command.Commands)
+            {
+                if (navCommand == InputCommand.Move)
+                    _positionController.ProgressPosition();
+                else
+                    _positionController.AdjustHeading(navCommand);
+            }
+        }
+
+        internal Position GetFinalPosition()
+        {
+            return new Position(_positionController.CurrentX, _positionController.CurrentY);
         }
     }
 }

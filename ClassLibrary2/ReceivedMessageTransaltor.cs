@@ -11,13 +11,13 @@ namespace ClassLibrary2
         public char[] InputArray { get; private set; }
         public IEnumerable<InputCommand> InputCommandCollection { get; set; }
 
-        public RoverInput Translate(string input)
+        public NavigationCommand Translate(string input)
         {
             InputArray = input.ToCharArray();
 
             InputCommandCollection = TranslateInputCharsIntoInputCommands(InputArray);
 
-            return new RoverInput(InputCommandCollection);
+            return new NavigationCommand(InputCommandCollection);
         }
 
         private IEnumerable<InputCommand> TranslateInputCharsIntoInputCommands(char[] inputArray)

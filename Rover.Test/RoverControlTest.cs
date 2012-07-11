@@ -10,28 +10,28 @@ namespace Rover.Test
     [TestFixture]
     public class RoverControlTest
     {
-        [Test]
-        public void RoverControlShouldExposeAnExecuteCommandMethodThatTakesAStringAsInput()
-        {
-            var sut = new RoverControl();
-            sut.ExecuteCommand(string.Empty);
+        //[Test]
+        //public void RoverControlShouldExposeAnExecuteCommandMethodThatTakesAStringAsInput()
+        //{
+        //    var sut = new RoverControl();
+        //    sut.ExecuteCommand(string.Empty);
 
-            Assert.Pass();
-        }
+        //    Assert.Pass();
+        //}
 
-        [Test]
-        public void RoverControlShouldMaintainACollectionOfRovers()
-        {
-            var sut = new RoverControl();
-            var rovers = sut.Rovers;
+        //[Test]
+        //public void RoverControlShouldMaintainACollectionOfRovers()
+        //{
+        //    var sut = new RoverControl();
+        //    var rovers = sut.Rovers;
 
-            Assert.IsInstanceOf<IList<ClassLibrary2.Rover>>(rovers);
-        }
+        //    Assert.IsInstanceOf<IList<ClassLibrary2.Rover>>(rovers);
+        //}
 
-        [Test]
-        public void ExecuteCommandShouldCreateANewRoverForEachCommand()
-        {
+        //[Test]
+        //public void ExecuteCommandShouldCreateANewRoverForEachCommand()
+        //{
 
-        }
+        //}
     }
 }

@@ -44,6 +44,8 @@
     <Compile Include="InputCommand.cs" />
     <Compile Include="Interfaces\IReceivedMessageTransaltor.cs" />
     <Compile Include="IPlateau.cs" />
+    <Compile Include="IPositionController.cs" />
+    <Compile Include="IRoverCollection.cs" />
     <Compile Include="Plateau.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="ReceivedMessageTransaltor.cs" />

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ClassLibrary2
 {
-    public interface IReceivedMessageTranslator
+    public interface IRoverCollection
     {
-        NavigationCommand Translate(string input);
+        Rover GetForLocation(int x, int y);
     }
 }

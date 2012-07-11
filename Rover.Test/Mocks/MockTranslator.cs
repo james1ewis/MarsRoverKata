@@ -17,14 +17,14 @@ namespace Rover.Test
             TranslateMethodParameterValue = string.Empty;
         }
 
-        public RoverInput Translate(string input)
+        public NavigationCommand Translate(string input)
         {
             TranslateMethodWasCalled = true;
             TranslateMethodParameterValue = input;
 
-            return (TranslateReturnObject == null) ? RoverInput.Empty : TranslateReturnObject;
+            return (TranslateReturnObject == null) ? NavigationCommand.Empty : TranslateReturnObject;
         }
 
-        public RoverInput TranslateReturnObject { get; set; }
+        public NavigationCommand TranslateReturnObject { get; set; }
     }
 }

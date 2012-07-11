@@ -85,7 +85,7 @@ namespace Rover.Test
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
             
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand>{ InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand>{ InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Left,InputCommand.Move,InputCommand.Move });
 
             sut.ReceiveDirectionInstructions("LMLMLMLMM");
 
@@ -102,7 +102,7 @@ namespace Rover.Test
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
 
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
             sut.ReceiveDirectionInstructions("LM");
 
@@ -140,11 +140,11 @@ namespace Rover.Test
         {
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
             sut.ReceiveDirectionInstructions("LM");
 
-            Assert.IsInstanceOf<RoverInput>(sut.Input);
+            Assert.IsInstanceOf<NavigationCommand>(sut.Input);
             Assert.AreEqual(mockTranslator.TranslateReturnObject, sut.Input);
         }
 
@@ -153,7 +153,7 @@ namespace Rover.Test
         {
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("2 2", "N", "5 5", mockTranslator);
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand> { InputCommand.Left, InputCommand.Move });
 
             var returnedPosition = sut.ReceiveDirectionInstructions("LM");
 
@@ -186,7 +186,7 @@ namespace Rover.Test
         {
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("2 2", "N", "2 2", mockTranslator);
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right, InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand> { InputCommand.Left, InputCommand.Move, InputCommand.Right, InputCommand.Move });
             
             var returnedPosition = sut.ReceiveDirectionInstructions("LMRM");
 
@@ -198,7 +198,7 @@ namespace Rover.Test
         {
             var mockTranslator = new MockTranslator();
             var sut = new ClassLibrary2.Rover("0 0", "S", "2 2", mockTranslator);
-            mockTranslator.TranslateReturnObject = new RoverInput(new List<InputCommand> { InputCommand.Move, InputCommand.Move, InputCommand.Left, InputCommand.Move });
+            mockTranslator.TranslateReturnObject = new NavigationCommand(new List<InputCommand> { InputCommand.Move, InputCommand.Move, InputCommand.Left, InputCommand.Move });
 
             var returnedPosition = sut.ReceiveDirectionInstructions("MMRM");
 
