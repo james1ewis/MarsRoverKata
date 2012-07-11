@@ -192,7 +192,7 @@ namespace Rover.Test
 
             Assert.AreEqual("1 2 N", returnedPosition);
         }
-
+        
         [Test]
         public void RoverShouldNotExecuteAnInputCommandIfItWillTakeItBelowTheLowerBoundsOfThePlateau()
         {

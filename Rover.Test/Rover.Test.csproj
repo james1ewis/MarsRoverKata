@@ -51,6 +51,7 @@
     <Compile Include="IntegrationTests\RoverIntegrationTests.cs" />
     <Compile Include="PlateauTest.cs" />
     <Compile Include="PositionTest.cs" />
+    <Compile Include="RoverControlTest.cs" />
     <Compile Include="RoverTest.cs" />
     <Compile Include="Mocks\MockTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
