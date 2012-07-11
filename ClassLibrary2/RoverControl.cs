@@ -7,10 +7,11 @@ namespace ClassLibrary2
 {
     public class RoverControl
     {
+        public IEnumerable<Rover> Rovers { get; set; }
 
-        public RoverControl(IEnumerable<Rover> rovers)
+        public RoverControl()
         {
-
+            Rovers = new List<Rover>();
         }
 
         public void ExecuteCommand(string command)

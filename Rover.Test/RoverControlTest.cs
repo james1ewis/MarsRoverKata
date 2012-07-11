@@ -13,18 +13,22 @@ namespace Rover.Test
         [Test]
         public void RoverControlShouldExposeAnExecuteCommandMethodThatTakesAStringAsInput()
         {
-            var sut = new RoverControl(new List<ClassLibrary2.Rover>());
+            var sut = new RoverControl();
             sut.ExecuteCommand(string.Empty);
 
             Assert.Pass();
         }
 
         [Test]
-        public void RoverControlShouldBeInitializedWithACollectionOfRovers()
+        public void RoverControlShouldMaintainACollectionOfRovers()
         {
-            var sut = new RoverControl(new List<ClassLibrary2.Rover>());
+            var sut = new RoverControl();
+            var rovers = sut.Rovers;
 
-            Assert.Pass();
+            Assert.IsInstanceOf<IEnumerable<ClassLibrary2.Rover>>(rovers);
         }
+
+        //[Test]
+        //public void ExecuteCommandShouldSendEach
     }
 }
